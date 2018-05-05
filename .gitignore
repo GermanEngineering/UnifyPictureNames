@@ -1,3 +1,7 @@
 input/
 output/
 .idea/
+icon.ico
+__pycache__/
+build/
+dist/
