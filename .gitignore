@@ -1,7 +1,8 @@
-input/
+input/test/
 output/
 .idea/
 icon.ico
 __pycache__/
 build/
 dist/
+UnifyPictureNames.spec
