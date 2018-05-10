@@ -4,7 +4,6 @@ import os
 from datetime import datetime
 import logging
 
-#test git commit
 
 def UnifyPictureNames():
     processedFiles = 0
