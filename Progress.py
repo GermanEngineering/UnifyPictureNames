@@ -1,0 +1,17 @@
+import math
+
+
+def PrintProgress(numberOfProcessedFiles):
+    if numberOfProcessedFiles == 1:
+        print("""
+            __ \ / __
+           /  \ | /  \\
+               \|/
+/\__/\   ,------v--_
+\_  _/  /           \\
+ \ \__|         o  __|
+  \                \_
+   \      ,_/       /""")
+
+    progress = numberOfProcessedFiles - (math.floor(numberOfProcessedFiles/24) * 24)
+    print(progress * "~", end="\r")
