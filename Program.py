@@ -1,5 +1,5 @@
 import exifread
-from shutil import copy
+from shutil import copy2
 import os
 from datetime import datetime
 import logging
@@ -28,19 +28,19 @@ def UnifyPictureNames():
             # WhatsApp images
             if "WA" in file:
                 newFileName = file.replace("IMG-", "")
-                copy(os.path.join(path, file), os.path.join(path.replace("input", "output"), newFileName))
+                copy2(os.path.join(path, file), os.path.join(path.replace("input", "output"), newFileName))
                 logging.debug("{0} - {1} --> {2}".format(GetFormattedDatetimeNow(), os.path.join(path, file), os.path.join(path.replace("input", "output"), newFileName)))
                 renamedFiles += 1
             # pictures with creation timestamp
             elif captureTime != "":
                 _, fileExtension = os.path.splitext(file)
                 newFileName = captureTime.replace(":", "").replace(" ", "_") + fileExtension.lower()
-                copy(os.path.join(path, file), os.path.join(path.replace("input", "output"), newFileName))
+                copy2(os.path.join(path, file), os.path.join(path.replace("input", "output"), newFileName))
                 logging.debug("{0} - {1} --> {2}".format(GetFormattedDatetimeNow(), os.path.join(path, file), os.path.join(path.replace("input", "output"), newFileName)))
                 renamedFiles += 1
             # files without creation timestamp
             else:
-                copy(os.path.join(path, file), os.path.join(path.replace("input", "output"), file))
+                copy2(os.path.join(path, file), os.path.join(path.replace("input", "output"), file))
                 unchangedFiles += 1
 
             processedFiles += 1
