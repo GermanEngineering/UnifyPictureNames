@@ -27,20 +27,20 @@ def UnifyPictureNames():
 
             # WhatsApp images
             if "WA" in file:
-                newFileName = file.replace("IMG-", "")
-                copy2(os.path.join(path, file), GetUniqueFileName(os.path.join(path.replace("input", "output"), newFileName)))
-                logging.debug("{0} - {1} --> {2}".format(GetFormattedDatetimeNow(), os.path.join(path, file), os.path.join(path.replace("input", "output"), newFileName)))
+                newFile = file.replace("IMG-", "")
+                copy2(os.path.join(path, file), GetUniqueFile(path.replace("input", "output"), newFile))
+                logging.debug("{0} - {1} --> {2}".format(GetFormattedDatetimeNow(), os.path.join(path, file), os.path.join(path.replace("input", "output"), newFile)))
                 renamedFiles += 1
             # pictures with creation timestamp
             elif captureTime != "":
                 _, fileExtension = os.path.splitext(file)
-                newFileName = captureTime.replace(":", "").replace(" ", "_") + fileExtension.lower()
-                copy2(os.path.join(path, file), GetUniqueFileName(os.path.join(path.replace("input", "output"), newFileName)))
-                logging.debug("{0} - {1} --> {2}".format(GetFormattedDatetimeNow(), os.path.join(path, file), os.path.join(path.replace("input", "output"), newFileName)))
+                newFile = captureTime.replace(":", "").replace(" ", "_") + fileExtension.lower()
+                copy2(os.path.join(path, file), GetUniqueFile(path.replace("input", "output"), newFile))
+                logging.debug("{0} - {1} --> {2}".format(GetFormattedDatetimeNow(), os.path.join(path, file), os.path.join(path.replace("input", "output"), newFile)))
                 renamedFiles += 1
             # files without creation timestamp
             else:
-                copy2(os.path.join(path, file), GetUniqueFileName(os.path.join(path.replace("input", "output"), file)))
+                copy2(os.path.join(path, file), GetUniqueFile(path.replace("input", "output"), file))
                 unchangedFiles += 1
 
             processedFiles += 1
@@ -54,15 +54,16 @@ def GetFormattedDatetimeNow():
 
 
 # Check if file already exists and rename if needed
-def GetUniqueFileName(fileDirectory, fileName):
+def GetUniqueFile(fileDirectory, file):
+    fileName, fileExtension = os.path.splitext(file)
     filePath = os.path.join(fileDirectory, fileName)
-    if os.path.isfile(filePath):
-        extension = 2
-        while os.path.isfile("{0}_{1}".format(filePath, extension)):
-            extension += 1
-        filePath = "{0}_{1}".format(filePath, extension)
+    if os.path.isfile("{0}{1}".format(filePath, fileExtension)):
+        fileNumber = 2
+        while os.path.isfile("{0}_{1}{2}".format(filePath, fileNumber, fileExtension)):
+            fileNumber += 1
+        filePath = "{0}_{1}".format(filePath, fileNumber)
 
-    return filePath
+    return "{0}{1}".format(filePath, fileExtension)
 
 
 try:
