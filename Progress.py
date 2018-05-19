@@ -14,4 +14,4 @@ def PrintProgress(numberOfProcessedFiles):
    \      ,_/       /""")
 
     progress = numberOfProcessedFiles - (math.floor(numberOfProcessedFiles/24) * 24)
-    print("{0}{1}".format(progress * "~", (24 - progress) * " "), end="\r")
+    print("{0}{1} Processed Files: {2}".format(progress * "~", (24 - progress) * " ", numberOfProcessedFiles), end="\r")
