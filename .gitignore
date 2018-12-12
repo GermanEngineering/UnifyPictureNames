@@ -1,12 +1,15 @@
 input/test/
 output/
 .idea/
+.vs/
 icon.ico
 __pycache__/
 build/
 dist/
 UnifyPictureNames.spec
 UnifyPictureNames.7z
+*.sln
+*.pyproj
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
