@@ -1,4 +1,4 @@
-input/test/
+input/
 output/
 .idea/
 .vs/
@@ -7,6 +7,7 @@ __pycache__/
 build/
 dist/
 UnifyPictureNames.spec
+UnifyPictureNames.log
 UnifyPictureNames.7z
 *.sln
 *.pyproj

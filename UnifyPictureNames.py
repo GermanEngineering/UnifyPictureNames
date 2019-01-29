@@ -6,41 +6,42 @@ import logging
 import Progress
 
 
-def UnifyPictureNames():
+def UnifyPictureNames(inputFolder, outputFolder):
     processedFiles = 0
     renamedFiles = 0
     unchangedFiles = 0
-    for path, subDirectories, files in os.walk("input"):
-        for file in files:
+    for path, subDirectories, files in os.walk(inputFolder):
+        # create output path
+        if not os.path.exists(path.replace(inputFolder, outputFolder)):
+            os.makedirs(path.replace(inputFolder, outputFolder))
 
-            # create output path
-            if not os.path.exists(path.replace("input", "output")):
-                os.makedirs(path.replace("input", "output"))
+        for file in files:
+            filePath = os.path.join(path, file)
 
             # get file metadata
-            metadata = exifread.process_file(open(os.path.join(path, file), "rb"))
+            metadata = exifread.process_file(open(filePath, "rb"))
             captureTime = ""
             try:
                 captureTime = str(metadata["EXIF DateTimeOriginal"])
             except Exception:
-                logging.info("{0} - No capture time found for: \"{1}\"".format(GetFormattedDatetimeNow(), os.path.join(path, file)))
+                logging.info("{0} - No capture time found for: \"{1}\"".format(GetFormattedDatetimeNow(), filePath))
 
             # WhatsApp images
             if "WA" in file:
                 newFile = file.replace("IMG-", "")
-                copy2(os.path.join(path, file), GetUniqueFile(path.replace("input", "output"), newFile))
-                logging.debug("{0} - {1} --> {2}".format(GetFormattedDatetimeNow(), os.path.join(path, file), os.path.join(path.replace("input", "output"), newFile)))
+                copy2(filePath, GetUniqueFile(path.replace(inputFolder, outputFolder), newFile))
+                logging.debug("{0} - {1} --> {2}".format(GetFormattedDatetimeNow(), filePath, os.path.join(path.replace(inputFolder, outputFolder), newFile)))
                 renamedFiles += 1
             # pictures with creation timestamp
             elif captureTime != "":
                 _, fileExtension = os.path.splitext(file)
                 newFile = captureTime.replace(":", "").replace(" ", "_") + fileExtension.lower()
-                copy2(os.path.join(path, file), GetUniqueFile(path.replace("input", "output"), newFile))
-                logging.debug("{0} - {1} --> {2}".format(GetFormattedDatetimeNow(), os.path.join(path, file), os.path.join(path.replace("input", "output"), newFile)))
+                copy2(filePath, GetUniqueFile(path.replace(inputFolder, outputFolder), newFile))
+                logging.debug("{0} - {1} --> {2}".format(GetFormattedDatetimeNow(), filePath, os.path.join(path.replace(inputFolder, outputFolder), newFile)))
                 renamedFiles += 1
             # files without creation timestamp
             else:
-                copy2(os.path.join(path, file), GetUniqueFile(path.replace("input", "output"), file))
+                copy2(filePath, GetUniqueFile(path.replace(inputFolder, outputFolder), file))
                 unchangedFiles += 1
 
             processedFiles += 1
@@ -69,7 +70,17 @@ def GetUniqueFile(fileDirectory, file):
 try:
     logging.basicConfig(filename="UnifyPictureNames.log", level=logging.INFO)
     logging.info("{0} - ##### Program Start #####".format(GetFormattedDatetimeNow()))
-    UnifyPictureNames()
+
+    inputFolder = input("Please specify the relative input folder name.\nJust press Enter to use the default value \"input\".\n")
+    if not inputFolder:
+        inputFolder = "input"
+    outputFolder = input("Please specify the relative output folder name.\nJust press Enter to use the default value \"output\".\n")
+    if not outputFolder:
+        outputFolder = "output"
+
+    UnifyPictureNames(inputFolder, outputFolder)
+
     logging.info("{0} - ##### Execution Finished #####\n".format(GetFormattedDatetimeNow()))
+
 except Exception as e:
     logging.exception("{0} - {1}".format(GetFormattedDatetimeNow(), e))
