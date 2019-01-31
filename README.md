@@ -4,9 +4,9 @@ This program will help you to save and present pictures from different camera ve
 ## Downloads:
 Clone or download the [Git Repository](https://github.com/GermanEngineering/UnifyPictureNames) or from my website:
 For Windows:
-	[20190130 - UnifyPictureNames.exe](https://trustmeimanengineer.de/wp-content/uploads/2019/01/UnifyPictureNamesWindows.7z)
+[20190130 - UnifyPictureNames.exe](https://trustmeimanengineer.de/wp-content/uploads/2019/01/UnifyPictureNamesWindows.7z)
 For Linux / MAC:
-	[20190130 - UnifyPictureNames.py](https://trustmeimanengineer.de/wp-content/uploads/2019/01/UnifyPictureNamesPython.7z)
+[20190130 - UnifyPictureNames.py](https://trustmeimanengineer.de/wp-content/uploads/2019/01/UnifyPictureNamesPython.7z)
 
 ## Application:
 1. Unzip the downloaded files.
@@ -16,7 +16,7 @@ For Linux / MAC:
 1. Specify the output folder for the results.
 1. Check the output folder for the results.
 
-The application of the program is very simple and explained in [this YouTube video](https://youtu.be/A-gYWGp0qLk).
+The application of the program is very simple and explained in [this YouTube video](https://www.youtube.com/watch?v=A-gYWGp0qLk).
 ![Unify Picture Names](https://trustmeimanengineer.de/wp-content/uploads/2018/05/UnifyPictureNames.png)
 
 ## Function:
