@@ -2,10 +2,10 @@
 This program will help you to save and present pictures from different camera vendors in a chronological order by unifying their names.
 
 ## Downloads:
-Clone or download the [Git Repository](https://github.com/GermanEngineering/UnifyPictureNames) or from my website:
-For Windows:
-[20190130 - UnifyPictureNames.exe](https://trustmeimanengineer.de/wp-content/uploads/2019/01/UnifyPictureNamesWindows.7z)
-For Linux / MAC:
+Clone or download the [Git Repository](https://github.com/GermanEngineering/UnifyPictureNames) or from my website:<br>
+For Windows:<br>
+[20190130 - UnifyPictureNames.exe](https://trustmeimanengineer.de/wp-content/uploads/2019/01/UnifyPictureNamesWindows.7z)<br>
+For Linux / MAC:<br>
 [20190130 - UnifyPictureNames.py](https://trustmeimanengineer.de/wp-content/uploads/2019/01/UnifyPictureNamesPython.7z)
 
 ## Application:
@@ -20,10 +20,10 @@ The application of the program is very simple and explained in [this YouTube vid
 ![Unify Picture Names](https://trustmeimanengineer.de/wp-content/uploads/2018/05/UnifyPictureNames.png)
 
 ## Function:
-The program will go through all pictures in the specified input folder, including subfolders.
-Only .jpg, .jpeg and .png files will be processed, while all others will be copied without any change.
-Next, the program will try to get the capture date from the image exif data.
-Every image containing this information will then be renamed according to the following pattern: YYYYMMDD_hhmmss
+The program will go through all pictures in the specified input folder, including subfolders.<br>
+Only .jpg, .jpeg and .png files will be processed, while all others will be copied without any change.<br>
+Next, the program will try to get the capture date from the image exif data.<br>
+Every image containing this information will then be renamed according to the following pattern: YYYYMMDD_hhmmss<br>
 The renamed images will be saved into the specified output folder.
 
 This will allow you to save or present pictures from different camera vendors in a chronological order.
@@ -32,5 +32,5 @@ I’ve already tested it successfully with LG and Samsung (Android Phone), Apple
 
 ***
 
-I'm frequently using this program in combination with another one helping you to automatically rotate your images into horizontal orientation.
+I'm frequently using this program in combination with another one helping you to automatically rotate your images into horizontal orientation.<br>
 You can find more about the project on this site: [Rotate Images](https://trustmeimanengineer.de/rotate-images/).
